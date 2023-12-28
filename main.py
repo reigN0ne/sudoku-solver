@@ -13,18 +13,24 @@ board = [
 def print_board(board):
     for row_idx, row in enumerate(board):
         print("--------------------------")
-        for col_idx, column in enumerate(row):
-            print(board[row_idx][col_idx], end=" ")
+        for col_idx, col in enumerate(row):
+            print(col, end=" ")
             if col_idx == 8:
                 print("||")
             elif (col_idx + 1) % 3 == 0 and col_idx != 0:
                 print("||", end=" ")
     print("--------------------------")
     
-def row_check(board):
-    pass
-
-def column_check(board):
+def row_check(board, box_row_idx, value):
+    row = board[box_row_idx]
+    
+    # Check before putting in the value:
+    for row_val in row:
+        if row_val == value:
+            return False
+    return True    
+        
+def column_check(board, box_col_idx):
     pass
 
 def grid_check(board):
@@ -33,4 +39,6 @@ def grid_check(board):
 def solve(board):
     pass
 
-print_board(board)
+# Run tests:
+# print_board(board)
+# print(row_check(board, 0, 5))
